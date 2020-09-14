@@ -9,16 +9,14 @@ import entity.Submission;
 import entity.TestCase;
 import enumeration.ProblemStatus;
 
-public class CompetitionRepository {
-	
-	private static final CompetitionRepository INSTANCE = new CompetitionRepository();
+public class CompetitionRepository implements ICompetitionRepository{
 	
 	private List<TestCase> testCases;
 	private List<Contestant> contestants;
 	private List<Problem> problems;
 	private List<Submission> submissions;
 	
-	private CompetitionRepository() {
+	public CompetitionRepository() {
 		testCases = new ArrayList<>();
 		contestants = new ArrayList<>();
 		problems = new ArrayList<>();
@@ -81,10 +79,6 @@ public class CompetitionRepository {
 		}
 		
 		return _submissions;
-	}
-
-	public static CompetitionRepository getInstance() {
-		return INSTANCE;
 	}
 	
 	public void addTestCase(TestCase newTestCase) {

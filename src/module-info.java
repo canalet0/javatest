@@ -1,4 +1,3 @@
 module javatest {
 	requires junit;
-	
 }

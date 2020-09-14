@@ -5,14 +5,14 @@ import java.util.List;
 import comparator.RankComparator;
 import entity.Contestant;
 import entity.TestCase;
-import repository.CompetitionRepository;
+import repository.ICompetitionRepository;
 
 public class ReportController {
 	
-	private CompetitionRepository _repository;
+	private ICompetitionRepository _repository;
 
-	public ReportController() {
-		this._repository = CompetitionRepository.getInstance();
+	public ReportController(ICompetitionRepository repository) {
+		this._repository = repository;
 	}
 	
 	public void printReport() {

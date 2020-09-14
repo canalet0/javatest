@@ -5,22 +5,22 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import entity.Contestant;
-import entity.Problem;
+import entity.Problem; 
 import entity.Submission;
 import entity.TestCase;
-import repository.CompetitionRepository;
+import repository.ICompetitionRepository;
 
 public class InputController {
 	
 	private File inputFile;
 	private Scanner fileReader;
-	private CompetitionRepository _repository;
+	private ICompetitionRepository _repository;
 
-	public InputController() {
-		this._repository = CompetitionRepository.getInstance();
+	public InputController(ICompetitionRepository repository) {
+		this._repository = repository;
 	}
 	
-	public void loadDataFromInput(String filePath) throws Exception {
+	public void loadDataFromInput(String filePath) throws FileNotFoundException,Exception {
 		if(filePath.isEmpty())
 			throw new Exception("Caminho do arquivo de dados invalido!");
 		
@@ -29,13 +29,13 @@ public class InputController {
 		this.closeFile();
 	}
 	
-	public void loadFile(String filePath) throws FileNotFoundException{
+	private void loadFile(String filePath) throws FileNotFoundException{
 		this.inputFile = new File(filePath);
 		
 		if(!inputFile.exists()
 		|| !inputFile.isFile()
 		|| !inputFile.canRead())
-			throw new FileNotFoundException("teste do canal!");
+			throw new FileNotFoundException();
 		
 		this.fileReader = new Scanner(this.inputFile);
 	}
@@ -103,5 +103,4 @@ public class InputController {
 		this._repository.addSubmission(submission);
 		return submission;
 	}
-
 }

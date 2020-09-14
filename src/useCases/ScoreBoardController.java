@@ -5,14 +5,14 @@ import entity.Problem;
 import entity.Submission;
 import entity.TestCase;
 import enumeration.SubmissionStatus;
-import repository.CompetitionRepository;
+import repository.ICompetitionRepository;
 
 public class ScoreBoardController {
 	
-	private CompetitionRepository _repository;
-	
-	public ScoreBoardController() {
-		this._repository = CompetitionRepository.getInstance();
+	private ICompetitionRepository _repository;
+
+	public ScoreBoardController(ICompetitionRepository repository) {
+		this._repository = repository;
 	}
 	
 	public void calculateScoreBoard() {
@@ -60,7 +60,6 @@ public class ScoreBoardController {
 	
 	private Integer calculateContestantSolvedProblems(Contestant contestant) {
 		Integer correctAnswers = 0;
-		
 		for (Submission submission : this._repository.getContestantSubmissions(contestant)) {
 			if(SubmissionStatus.CORRECT.equals(submission.getStatus()))
 				correctAnswers++;
