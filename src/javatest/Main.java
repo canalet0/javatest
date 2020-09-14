@@ -13,7 +13,7 @@ public class Main {
 			ICompetitionRepository repository = CompetitonRepositoryFactory.getInstance();
 			
 			InputController inputController = new InputController(repository);
-			inputController.loadDataFromInput("data/data.txt");
+			inputController.loadDataFromInput("data/input.txt");
 			
 			System.out.println(repository.getTestCases().size());
 			
