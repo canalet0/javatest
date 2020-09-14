@@ -5,7 +5,8 @@ public enum SubmissionStatus {
 	INCORRECT("I"),
 	CLARIFICATION_REQUEST("R"),
 	UNJUDGED("U"),
-	ERRONEOUS("E");
+	ERRONEOUS("E"),
+	UNDEFINED("");
 	
 	private final String value;
 	

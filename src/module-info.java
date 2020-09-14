@@ -1,3 +1,4 @@
-module javatest1 {
+module javatest {
+	requires junit;
 	
 }
